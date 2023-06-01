@@ -1,2 +1,2 @@
-print("hdfhjtroilkjoitrjh")
+print("_")
 print ("жопа в космосе")
