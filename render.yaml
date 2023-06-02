@@ -1,5 +1,22 @@
-language: python
-install:
-- pip3 install flask
-script:
-- python3 ./flaskapp/some_app.py
+version: 2.1
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: Run tests
+      run: |
+        python tests.py
+    - name: Start Flask app
+      run: |
+        export FLASK_APP=app.py
+        flask run --host=0.0.0.0
